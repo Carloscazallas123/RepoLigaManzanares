@@ -1,0 +1,14 @@
+package com.example.demo.controladores;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ControladorIndex {
+
+	// ---Menu Principal
+	@GetMapping("/")
+	public String menuindex() {
+		return "MenuIndex";
+	}
+}

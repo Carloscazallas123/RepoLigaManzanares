@@ -1,0 +1,66 @@
+package com.example.demo.servicios.implementaciones;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.modelos.EquipoDTO;
+import com.example.demo.modelos.JugadorDTO;
+import com.example.demo.servicios.ServicioJugador;
+
+@Service
+public class ImplementacionJugador implements ServicioJugador {
+
+	@Override
+	public void guardarjugador(JugadorDTO jugador, ArrayList<EquipoDTO> Listaequipos,
+			ArrayList<JugadorDTO> Listajugadores) {
+		boolean equipoencontrado = false;
+		String equipo = jugador.getEquipo();
+
+		/*
+		 * For que sirve para recorrer el ArrayList de equipos Si el equipo del jugador
+		 * coincide
+		 */
+		for (int i = 0; i < Listaequipos.size(); i++) {
+
+			if (Listaequipos.get(i).getNombre().equals(equipo)) {
+				Listaequipos.get(i).getJugadores().add(jugador);
+				equipoencontrado = true;
+			}
+		}
+		/*
+		 * If para que en caso de que no encuentre equipo, se le asigne de
+		 * "Agente Libre"
+		 */
+		if (equipoencontrado == false) {
+			jugador.setEquipo("AgenteLibre");
+			Listajugadores.add(jugador);
+		} else {
+			Listajugadores.add(jugador);
+		}
+	}
+
+	@Override
+	public JugadorDTO obtenerjugador(ArrayList<JugadorDTO> listajugadores, String nombrejugador) {
+		JugadorDTO jugadorencontrado = null;
+
+		for (int i = 0; i < listajugadores.size(); i++) {
+			if (listajugadores.get(i).getNombre().equals(nombrejugador)) {
+				jugadorencontrado = listajugadores.get(i);
+			}
+		}
+		return jugadorencontrado;
+	}
+
+	@Override
+	public void eliminarjugador(JugadorDTO jugador, EquipoDTO equipo) {
+		for (int i = 0; i < equipo.getJugadores().size(); i++) {
+			if (equipo.getJugadores().get(i).getNombre().equals(jugador.getNombre())) {
+				equipo.getJugadores().remove(i);
+				jugador.setEquipo("Agente Libre");
+			}
+		}
+
+	}
+
+}
