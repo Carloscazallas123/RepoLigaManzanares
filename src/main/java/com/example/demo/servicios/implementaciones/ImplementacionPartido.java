@@ -14,7 +14,7 @@ public class ImplementacionPartido implements ServicioPartido {
 	public void guardarpartido(List<PartidoDTO> listapartidos, PartidoDTO partido) {
 		boolean comprobarequipos = comprobarequipos(partido, listapartidos);
 
-		if (comprobarequipos == true) {
+		if (comprobarequipos == false) {
 			listapartidos.add(partido);
 		} else {
 			System.out.println("Error, vuelve a intentarlo");

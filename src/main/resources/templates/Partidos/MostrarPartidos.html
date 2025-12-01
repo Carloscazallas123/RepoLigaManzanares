@@ -26,9 +26,9 @@
 		</thead>
 		<tbody>
 
-			<tr th:each="PartidoDTO : ${ListadePartidos}">
+			<tr th:each="PartidoDTO : ${ListaPartidos}">
 				<td th:text="${PartidoDTO.jornada}">Jornada del Partido</td>
-				<td th:text="${JugadorDTO.fecha}">Fecha del Partido</td>
+				<td th:text="${PartidoDTO.fecha}">Fecha del Partido</td>
 				<td th:text="${PartidoDTO.lugar}">Lugar del Jugador</td>
 				<td th:text="${PartidoDTO.equipo1}">Nombre del Equipo Local</td>
 				<td th:text="${PartidoDTO.equipo2}">Nombre del Equipo Visitante</td>

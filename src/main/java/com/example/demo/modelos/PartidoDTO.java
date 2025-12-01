@@ -13,7 +13,7 @@ public class PartidoDTO {
 	// -------------------------------
 	private int golesL;
 	private int golesV;
-	private int amarilas;
+	private int amarillas;
 	private int rojas;
 
 	public PartidoDTO(int id, int jornada, String fecha, String lugar, String equipo1, String equipo2, int golesL,
@@ -28,7 +28,7 @@ public class PartidoDTO {
 		this.resultado = "No Disponible";
 		this.golesL = 0;
 		this.golesV = 0;
-		this.amarilas = 0;
+		this.amarillas = 0;
 		this.rojas = 0;
 
 	}
@@ -39,7 +39,7 @@ public class PartidoDTO {
 		this.resultado = "No Disponible";
 		this.golesL = 0;
 		this.golesV = 0;
-		this.amarilas = 0;
+		this.amarillas = 0;
 		this.rojas = 0;
 
 	}
@@ -68,12 +68,12 @@ public class PartidoDTO {
 		this.golesV = golesV;
 	}
 
-	public int getAmarilas() {
-		return amarilas;
+	public int getAmarillas() {
+		return amarillas;
 	}
 
-	public void setAmarilas(int amarilas) {
-		this.amarilas = amarilas;
+	public void setAmarillas(int amarilas) {
+		this.amarillas = amarilas;
 	}
 
 	public int getRojas() {
