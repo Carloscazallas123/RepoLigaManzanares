@@ -67,4 +67,14 @@ public class ImplementacionEquipo implements ServicioEquipo {
 
 	}
 
+	@Override
+	public void eliminarequipo(ArrayList<EquipoDTO> listaequipos, String nombreequipo) {
+		for (int i = 0; i < listaequipos.size(); i++) {
+			if (listaequipos.get(i).getNombre().equals(nombreequipo)) {
+				listaequipos.remove(i);
+			}
+		}
+
+	}
+
 }

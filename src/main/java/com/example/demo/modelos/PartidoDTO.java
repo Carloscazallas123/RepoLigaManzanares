@@ -2,15 +2,23 @@ package com.example.demo.modelos;
 
 public class PartidoDTO {
 
+	private int id;
 	private int jornada;
 	private String fecha;
 	private String lugar;
-	private EquipoDTO equipo1;
-	private EquipoDTO equipo2;
+	private String equipo1; // Equipo Local
+	private String equipo2; // Equipo Visitante
 	private String estado;
 	private String resultado;
+	// -------------------------------
+	private int golesL;
+	private int golesV;
+	private int amarilas;
+	private int rojas;
 
-	public PartidoDTO(int jornada, String fecha, String lugar, EquipoDTO equipo1, EquipoDTO equipo2) {
+	public PartidoDTO(int id, int jornada, String fecha, String lugar, String equipo1, String equipo2, int golesL,
+			int golesV, int amarillas, int rojas) {
+		this.id = id;
 		this.jornada = jornada;
 		this.fecha = fecha;
 		this.lugar = lugar;
@@ -18,12 +26,62 @@ public class PartidoDTO {
 		this.equipo2 = equipo2;
 		this.estado = "Pendiente de Jugar";
 		this.resultado = "No Disponible";
+		this.golesL = 0;
+		this.golesV = 0;
+		this.amarilas = 0;
+		this.rojas = 0;
+
 	}
 
 	public PartidoDTO() {
 
 		this.estado = "Pendiente de Jugar";
 		this.resultado = "No Disponible";
+		this.golesL = 0;
+		this.golesV = 0;
+		this.amarilas = 0;
+		this.rojas = 0;
+
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getGolesL() {
+		return golesL;
+	}
+
+	public void setGolesL(int golesL) {
+		this.golesL = golesL;
+	}
+
+	public int getGolesV() {
+		return golesV;
+	}
+
+	public void setGolesV(int golesV) {
+		this.golesV = golesV;
+	}
+
+	public int getAmarilas() {
+		return amarilas;
+	}
+
+	public void setAmarilas(int amarilas) {
+		this.amarilas = amarilas;
+	}
+
+	public int getRojas() {
+		return rojas;
+	}
+
+	public void setRojas(int rojas) {
+		this.rojas = rojas;
 	}
 
 	public int getJornada() {
@@ -50,19 +108,19 @@ public class PartidoDTO {
 		this.lugar = lugar;
 	}
 
-	public EquipoDTO getEquipo1() {
+	public String getEquipo1() {
 		return equipo1;
 	}
 
-	public void setEquipo1(EquipoDTO equipo1) {
+	public void setEquipo1(String equipo1) {
 		this.equipo1 = equipo1;
 	}
 
-	public EquipoDTO getEquipo2() {
+	public String getEquipo2() {
 		return equipo2;
 	}
 
-	public void setEquipo2(EquipoDTO equipo2) {
+	public void setEquipo2(String equipo2) {
 		this.equipo2 = equipo2;
 	}
 

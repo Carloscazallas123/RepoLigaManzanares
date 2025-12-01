@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Tabla Equipos</title>
+</head>
+<body>
+
+	<div class="vacio" th:if="${ListaPartidos.isEmpty()}">
+		<h3>Lista vacia</h3>
+	</div>
+	<table th:if="${!ListaPartidos.isEmpty()}">
+		<thead>
+			<tr>
+				<th>Jornada</th>
+				<th>Fecha</th>
+				<th>Lugar</th>
+				<th>EquipoL</th>
+				<th>EquipoV</th>
+				<th>Estado</th>
+				<th>GolesL</th>
+				<th>GolesV</th>
+				<th>Amarillas</th>
+				<th>Rojas</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="PartidoDTO : ${ListadePartidos}">
+				<td th:text="${PartidoDTO.jornada}">Jornada del Partido</td>
+				<td th:text="${JugadorDTO.fecha}">Fecha del Partido</td>
+				<td th:text="${PartidoDTO.lugar}">Lugar del Jugador</td>
+				<td th:text="${PartidoDTO.equipo1}">Nombre del Equipo Local</td>
+				<td th:text="${PartidoDTO.equipo2}">Nombre del Equipo Visitante</td>
+				<td th:text="${PartidoDTO.estado}">Estado del Partido</td>
+				<td th:text="${PartidoDTO.golesL}">Goles del Equipo Local</td>
+				<td th:text="${PartidoDTO.golesV}">Goles del Equipo Visitante</td>
+				<td th:text="${PartidoDTO.amarillas}">Amarillas del Partido</td>
+				<td th:text="${PartidoDTO.rojas}">Rojas del Partido</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/" class="btn-volver">⬅ Volver</a>
+</body>
+<style>
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: #f4f4f4;
+	color: #333;
+	margin: 20px;
+	line-height: 1.6;
+}
+
+.titulo {
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #e0e0e0;
+	border-radius: 5px;
+}
+
+.titulo h3 {
+	margin: 0;
+	color: #555;
+	text-align: center;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #f0f0f0;
+	font-weight: bold;
+	color: #444;
+}
+
+a.btn-volver {
+	display: block;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	text-align: center;
+}
+
+a.btn-volver:hover {
+	background-color: #3e8e41;
+}
+
+.vacio {
+	text-align: center;
+	font-style: italic;
+	color: #777;
+}
+</style>
+
+</html>

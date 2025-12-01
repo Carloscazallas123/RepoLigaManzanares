@@ -2,9 +2,7 @@ package com.example.demo.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -86,31 +84,27 @@ public class ControladorModificar {
 	// ------------------------------------------------------------CAMBIAR
 	// ENTRENADOR
 	// --------->Pagina para indicar el nombre del entrenador (Y el equipo)
-	@GetMapping("/IndicarEtrenador")
+	@GetMapping("/IndicarEntrenador")
 	public String indicarentrenador() {
 		return "Modificar/IndicarEntrenador";
 	}
 
-	// --------->Metodo para obtener el equipo del entrenador
-	@GetMapping("/ObtenerEntrenador")
-	public String cambiarentrenador(@RequestParam String nombreequipo, Model modelo) {
+	// --------->Metodo para modificar el entrenador
+	@GetMapping("/ModificarEntrenador")
+	public String cambiarentrenador(@RequestParam String nombreentrenador, @RequestParam String nombreequipo) {
 		boolean existe = servicioequipo.comprobarequipo(ControladorEquipo.ListaEquipos, nombreequipo);
-		EquipoDTO equipo;
+
 		if (existe == false) {
-			System.out.println("Equipo Inexistente");
+			System.out.println("Equipo inexistente");
 			return "redirect:/";
 		} else {
-			equipo = servicioequipo.obtenerequipo(ControladorEquipo.ListaEquipos, nombreequipo);
-			modelo.addAttribute("EquipoSacado", equipo);
+			servicioequipo.modificarentrenador(ControladorEquipo.ListaEquipos, nombreequipo, nombreentrenador);
+			return "redirect:/";
 		}
-		return "Modificar/ModificarEntrenador";
-	}
 
-	// --------->Metodo para modificar el entrenador
-	@PostMapping("/ModificarEntrenador")
-	public String cambiarentrenador(@RequestParam String nombreentrenador, @RequestParam String nombreequipo) {
-		servicioequipo.modificarentrenador(ControladorEquipo.ListaEquipos, nombreequipo, nombreentrenador);
-		return "redirect:/";
 	}
+	
+	
+	
 
 }

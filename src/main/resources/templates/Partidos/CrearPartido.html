@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Crear Partido</title>
+</head>
+<body>
+	<form action="#" th:action="@{/Partido/GuardarPartido}"
+		th:object="${PartidoDTO}" method="post">
+
+		<h4>Jornada del Partido</h4>
+		<input type="number" th:field="*{jornada}" id="jornada">
+
+		<h4>Fecha del Partido (XX-X-XX)</h4>
+		<input type="text" th:field="*{fecha}" id="fecha">
+
+		<h4>Lugar del Partido</h4>
+		<input type="text" th:field="*{lugar}" id="lugar">
+
+		<h4>Equipo Nº1 que compite el Partido</h4>
+		<input type="text" th:field="*{equipo1}" id="equipo1">
+
+		<h4>Equipo Nº2 que compite el Partido</h4>
+		<input type="text" th:field="*{equipo2}" id="equipo2">
+
+		<button type="submit">Guardar Partido</button>
+	</form>
+</body>
+</html>
