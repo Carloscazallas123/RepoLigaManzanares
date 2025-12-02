@@ -13,7 +13,6 @@ public class ImplementacionPartido implements ServicioPartido {
 	@Override
 	public void guardarpartido(List<PartidoDTO> listapartidos, PartidoDTO partido) {
 		boolean comprobarequipos = comprobarequipos(partido, listapartidos);
-
 		if (comprobarequipos == false) {
 			listapartidos.add(partido);
 		} else {
@@ -34,5 +33,25 @@ public class ImplementacionPartido implements ServicioPartido {
 			repetidos = false;
 		}
 		return repetidos;
+	}
+
+	@Override
+	public PartidoDTO obtenerpartido(List<PartidoDTO> listapartidos, int jornada, String equipo1, String equipo2) {
+		PartidoDTO partido = null;
+		boolean existe = false;
+		for (int i = 0; i < listapartidos.size(); i++) {
+			if (listapartidos.get(i).getJornada() == jornada && listapartidos.get(i).getEquipo1().equals(equipo1)
+					&& listapartidos.get(i).getEquipo2().equals(equipo2)) {
+				partido = listapartidos.get(i);
+				existe = true;
+			}
+
+		}
+
+		if (existe == false) {
+			System.out.println("Partido Inexistente");
+		}
+
+		return partido;
 	}
 }

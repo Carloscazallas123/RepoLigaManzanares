@@ -2,7 +2,6 @@ package com.example.demo.modelos;
 
 public class PartidoDTO {
 
-	private int id;
 	private int jornada;
 	private String fecha;
 	private String lugar;
@@ -18,7 +17,6 @@ public class PartidoDTO {
 
 	public PartidoDTO(int id, int jornada, String fecha, String lugar, String equipo1, String equipo2, int golesL,
 			int golesV, int amarillas, int rojas) {
-		this.id = id;
 		this.jornada = jornada;
 		this.fecha = fecha;
 		this.lugar = lugar;
@@ -42,14 +40,6 @@ public class PartidoDTO {
 		this.amarillas = 0;
 		this.rojas = 0;
 
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getGolesL() {
