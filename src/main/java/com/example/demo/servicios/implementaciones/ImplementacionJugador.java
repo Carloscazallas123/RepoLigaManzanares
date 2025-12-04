@@ -1,6 +1,6 @@
 package com.example.demo.servicios.implementaciones;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -12,8 +12,8 @@ import com.example.demo.servicios.ServicioJugador;
 public class ImplementacionJugador implements ServicioJugador {
 
 	@Override
-	public void guardarjugador(JugadorDTO jugador, ArrayList<EquipoDTO> Listaequipos,
-			ArrayList<JugadorDTO> Listajugadores) {
+	public void guardarjugador(JugadorDTO jugador, List<EquipoDTO> Listaequipos,
+			List<JugadorDTO> Listajugadores) {
 		boolean equipoencontrado = false;
 		String equipo = jugador.getEquipo();
 
@@ -41,12 +41,13 @@ public class ImplementacionJugador implements ServicioJugador {
 	}
 
 	@Override
-	public JugadorDTO obtenerjugador(ArrayList<JugadorDTO> listajugadores, String nombrejugador) {
+	public JugadorDTO obtenerjugador(List<JugadorDTO> listajugadores, String nombrejugador) {
 		JugadorDTO jugadorencontrado = null;
 
 		for (int i = 0; i < listajugadores.size(); i++) {
 			if (listajugadores.get(i).getNombre().equals(nombrejugador)) {
 				jugadorencontrado = listajugadores.get(i);
+				System.out.println("Jugador Encontrado");
 			}
 		}
 		return jugadorencontrado;

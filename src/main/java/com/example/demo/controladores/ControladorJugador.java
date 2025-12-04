@@ -2,6 +2,7 @@ package com.example.demo.controladores;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/Jugadores")
 public class ControladorJugador {
 
-	public static ArrayList<JugadorDTO> listajugadores = new ArrayList<JugadorDTO>();
+	public static List<JugadorDTO> listajugadores = new ArrayList<JugadorDTO>();
 	@Autowired
 	ServicioJugador serviciojugador;
 
@@ -44,6 +45,13 @@ public class ControladorJugador {
 
 		serviciojugador.guardarjugador(jugador, ControladorEquipo.ListaEquipos, listajugadores);
 		return "redirect:/";
+	}
+	
+	//----------------->Pagina para Buscar al jugador
+	@GetMapping("/MostrarGoleadores")
+	public String mostrargoleadores(Model modelo) {
+		return "Jugadores/MostrarJugadores";
+
 	}
 
 }

@@ -12,7 +12,7 @@ public interface ServicioPartido {
 	void guardarpartido(List<PartidoDTO> listapartidos,PartidoDTO partido);
 	PartidoDTO obtenerpartido(List<PartidoDTO>listapartidos,int jornada,String fecha);
 	void metergol(PartidoDTO partido,JugadorDTO jugador,List<EquipoDTO>listaequipos);
-	
-	
+	void sacartarjeta(PartidoDTO partido,JugadorDTO jugador,String tarjeta);
+	void terminarpartido(PartidoDTO partido,List<EquipoDTO>listaequipos);
 	
 }

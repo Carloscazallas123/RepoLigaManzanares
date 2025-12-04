@@ -12,7 +12,6 @@
 	<table th:if="${!ListaPartidos.isEmpty()}">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>Jornada</th>
 				<th>Fecha</th>
 				<th>Lugar</th>
@@ -20,6 +19,8 @@
 				<th>EquipoV</th>
 				<th>GolesL</th>
 				<th>GolesV</th>
+				<th>Rojas</th>
+				<th>Amarillas</th>
 				<th>Estado</th>
 				
 			</tr>
@@ -34,6 +35,8 @@
 				<td th:text="${PartidoDTO.equipo2}">Nombre del Equipo Visitante</td>
 				<td th:text="${PartidoDTO.golesL}">Goles del Equipo Local</td>
 				<td th:text="${PartidoDTO.golesV}">Goles del Equipo Visitante</td>
+				<td th:text="${PartidoDTO.amarillas}">Amarillas del Partido</td>
+				<td th:text="${PartidoDTO.rojas}">Rojas del Partido</td>
 				<td th:text="${PartidoDTO.estado}">Estado del Partido</td>
 			</tr>
 		</tbody>

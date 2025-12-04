@@ -59,39 +59,81 @@ public class ImplementacionPartido implements ServicioPartido {
 
 	@Override
 	public void metergol(PartidoDTO partido, JugadorDTO jugador, List<EquipoDTO> listaequipos) {
-	EquipoDTO equipo1 = null; EquipoDTO equipo2 = null;
-	
-	//For para obtener los equipos 
-	for(int i=0;i<listaequipos.size();i++) {
-		if(listaequipos.get(i).getNombre().equals(partido.getEquipo1())) {
-			equipo1=listaequipos.get(i);
-		} else if(listaequipos.get(i).getNombre().equals(partido.getEquipo2())) {
-			equipo2=listaequipos.get(i);
+		EquipoDTO equipo1 = null;
+		EquipoDTO equipo2 = null;
+
+		// For para obtener los equipos
+		for (int i = 0; i < listaequipos.size(); i++) {
+			if (listaequipos.get(i).getNombre().equals(partido.getEquipo1())) {
+				equipo1 = listaequipos.get(i);
+			} else if (listaequipos.get(i).getNombre().equals(partido.getEquipo2())) {
+				equipo2 = listaequipos.get(i);
+			}
 		}
-	}
-		if(jugador.getEquipo().equals(equipo1.getNombre())) {
-			//Añadiendo el Gol a la estadistica del jugador
+		if (jugador.getEquipo().equals(equipo1.getNombre())) {
+			// Añadiendo el Gol a la estadistica del jugador
 			jugador.setGoles(jugador.getGoles() + 1);
-			//Añadiendo el Gol al equipo visitante (equipo2) del partido
+			// Añadiendo el Gol al equipo visitante (equipo2) del partido
 			partido.setGolesL(partido.getGolesV() + 1);
-			//Añadiendo el Gol a las estadisticas de los equipo
+			// Añadiendo el Gol a las estadisticas de los equipo
 			equipo1.setGolesfavor(equipo2.getGolesfavor() + 1);
 			equipo2.setGolescontra(equipo1.getGolescontra() + 1);
-			
-		} else if(jugador.getEquipo().equals(equipo2.getNombre())) {
-			//Añadiendo el Gol a la estadistica del jugador
+
+		} else if (jugador.getEquipo().equals(equipo2.getNombre())) {
+			// Añadiendo el Gol a la estadistica del jugador
 			jugador.setGoles(jugador.getGoles() + 1);
-			//Añadiendo el Gol al equipo visitante (equipo2) del partido
+			// Añadiendo el Gol al equipo visitante (equipo2) del partido
 			partido.setGolesV(partido.getGolesV() + 1);
-			//Añadiendo el Gol a las estadisticas de los equipo
+			// Añadiendo el Gol a las estadisticas de los equipo
 			equipo2.setGolesfavor(equipo2.getGolesfavor() + 1);
 			equipo1.setGolescontra(equipo1.getGolescontra() + 1);
 		} else {
 			System.out.println("Error");
 		}
-	
-	
-		
+
+	}
+
+	@Override
+	public void sacartarjeta(PartidoDTO partido, JugadorDTO jugador, String tarjeta) {
+
+		if (tarjeta.equals("Amarilla")) {
+			jugador.setAmarillas(jugador.getAmarillas() + 1);
+			partido.setAmarillas(partido.getAmarillas() + 1);
+		} else {
+			jugador.setRojas(jugador.getRojas() + 1);
+			partido.setRojas(partido.getRojas() + 1);
+		}
+
+	}
+
+	@Override
+	public void terminarpartido(PartidoDTO partido, List<EquipoDTO> listaequipos) {
+		EquipoDTO equipo1 = null;
+		EquipoDTO equipo2 = null;
+
+		// For para obtener los equipos
+		for (int i = 0; i < listaequipos.size(); i++) {
+			if (listaequipos.get(i).getNombre().equals(partido.getEquipo1())) {
+				equipo1 = listaequipos.get(i);
+			} else if (listaequipos.get(i).getNombre().equals(partido.getEquipo2())) {
+				equipo2 = listaequipos.get(i);
+			}
+		}
+
+		if (partido.getGolesL() > partido.getGolesV()) {
+			equipo1.setPuntos(equipo1.getPuntos() + 3);
+			equipo1.setVictorias(equipo1.getVictorias() + 1);
+			equipo2.setDerrotas(equipo2.getDerrotas() + 1);
+		} else if (partido.getGolesL() < partido.getGolesV()) {
+			equipo2.setPuntos(equipo2.getPuntos() + 3);
+			equipo2.setVictorias(equipo2.getVictorias() + 1);
+			equipo1.setDerrotas(equipo1.getDerrotas() + 1);
+		} else {
+			equipo1.setPuntos(equipo1.getPuntos() + 1);
+			equipo2.setPuntos(equipo2.getPuntos() + 1);
+		}
+
+		partido.setEstado("Terminado");
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.example.demo.servicios.implementaciones;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import com.example.demo.servicios.ServicioEquipo;
 public class ImplementacionEquipo implements ServicioEquipo {
 
 	@Override
-	public void guardarequipo(EquipoDTO equipo, ArrayList<EquipoDTO> listaequipos) {
+	public void guardarequipo(EquipoDTO equipo, List<EquipoDTO> listaequipos) {
 		boolean existe = false;
 
 		for (int i = 0; i < listaequipos.size(); i++) {
@@ -32,7 +32,7 @@ public class ImplementacionEquipo implements ServicioEquipo {
 	}
 
 	@Override
-	public boolean comprobarequipo(ArrayList<EquipoDTO> listaequipos, String nombreequipo) {
+	public boolean comprobarequipo(List<EquipoDTO> listaequipos, String nombreequipo) {
 		boolean existe = false;
 		for (int i = 0; i < listaequipos.size(); i++) {
 			if (listaequipos.get(i).getNombre().equals(nombreequipo)) {
@@ -43,7 +43,7 @@ public class ImplementacionEquipo implements ServicioEquipo {
 	}
 
 	@Override
-	public EquipoDTO obtenerequipo(ArrayList<EquipoDTO> listaequipos, String nombreequipo) {
+	public EquipoDTO obtenerequipo(List<EquipoDTO> listaequipos, String nombreequipo) {
 		EquipoDTO equiposacado = null;
 
 		for (int i = 0; i < listaequipos.size(); i++) {
@@ -56,7 +56,7 @@ public class ImplementacionEquipo implements ServicioEquipo {
 	}
 
 	@Override
-	public void modificarentrenador(ArrayList<EquipoDTO> listaequipos, String nombreequipo, String nombreentrenador) {
+	public void modificarentrenador(List<EquipoDTO> listaequipos, String nombreequipo, String nombreentrenador) {
 
 		for (int i = 0; i < listaequipos.size(); i++) {
 
@@ -68,7 +68,7 @@ public class ImplementacionEquipo implements ServicioEquipo {
 	}
 
 	@Override
-	public void eliminarequipo(ArrayList<EquipoDTO> listaequipos, String nombreequipo) {
+	public void eliminarequipo(List<EquipoDTO> listaequipos, String nombreequipo) {
 		for (int i = 0; i < listaequipos.size(); i++) {
 			if (listaequipos.get(i).getNombre().equals(nombreequipo)) {
 				listaequipos.remove(i);
