@@ -18,11 +18,10 @@
 				<th>Lugar</th>
 				<th>EquipoL</th>
 				<th>EquipoV</th>
-				<th>Estado</th>
 				<th>GolesL</th>
 				<th>GolesV</th>
-				<th>Amarillas</th>
-				<th>Rojas</th>
+				<th>Estado</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -33,11 +32,9 @@
 				<td th:text="${PartidoDTO.lugar}">Lugar del Jugador</td>
 				<td th:text="${PartidoDTO.equipo1}">Nombre del Equipo Local</td>
 				<td th:text="${PartidoDTO.equipo2}">Nombre del Equipo Visitante</td>
-				<td th:text="${PartidoDTO.estado}">Estado del Partido</td>
 				<td th:text="${PartidoDTO.golesL}">Goles del Equipo Local</td>
 				<td th:text="${PartidoDTO.golesV}">Goles del Equipo Visitante</td>
-				<td th:text="${PartidoDTO.amarillas}">Amarillas del Partido</td>
-				<td th:text="${PartidoDTO.rojas}">Rojas del Partido</td>
+				<td th:text="${PartidoDTO.estado}">Estado del Partido</td>
 			</tr>
 		</tbody>
 	</table>

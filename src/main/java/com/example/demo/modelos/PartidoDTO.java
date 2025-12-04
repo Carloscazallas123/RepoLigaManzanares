@@ -8,12 +8,9 @@ public class PartidoDTO {
 	private String equipo1; // Equipo Local
 	private String equipo2; // Equipo Visitante
 	private String estado;
-	private String resultado;
 	// -------------------------------
 	private int golesL;
 	private int golesV;
-	private int amarillas;
-	private int rojas;
 
 	public PartidoDTO(int id, int jornada, String fecha, String lugar, String equipo1, String equipo2, int golesL,
 			int golesV, int amarillas, int rojas) {
@@ -23,22 +20,15 @@ public class PartidoDTO {
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
 		this.estado = "Pendiente de Jugar";
-		this.resultado = "No Disponible";
 		this.golesL = 0;
 		this.golesV = 0;
-		this.amarillas = 0;
-		this.rojas = 0;
-
 	}
 
 	public PartidoDTO() {
 
 		this.estado = "Pendiente de Jugar";
-		this.resultado = "No Disponible";
 		this.golesL = 0;
 		this.golesV = 0;
-		this.amarillas = 0;
-		this.rojas = 0;
 
 	}
 
@@ -56,22 +46,6 @@ public class PartidoDTO {
 
 	public void setGolesV(int golesV) {
 		this.golesV = golesV;
-	}
-
-	public int getAmarillas() {
-		return amarillas;
-	}
-
-	public void setAmarillas(int amarilas) {
-		this.amarillas = amarilas;
-	}
-
-	public int getRojas() {
-		return rojas;
-	}
-
-	public void setRojas(int rojas) {
-		this.rojas = rojas;
 	}
 
 	public int getJornada() {
@@ -102,7 +76,7 @@ public class PartidoDTO {
 		return equipo1;
 	}
 
-	public void setEquipo1(String equipo1) {
+	public void EquipoDTO(String equipo1) {
 		this.equipo1 = equipo1;
 	}
 
@@ -120,14 +94,6 @@ public class PartidoDTO {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	public String getResultado() {
-		return resultado;
-	}
-
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
 	}
 
 }
