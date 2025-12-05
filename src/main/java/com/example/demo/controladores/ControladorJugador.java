@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.modelos.JugadorDTO;
 import com.example.demo.servicios.ServicioJugador;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/Jugadores")
@@ -46,12 +47,35 @@ public class ControladorJugador {
 		serviciojugador.guardarjugador(jugador, ControladorEquipo.ListaEquipos, listajugadores);
 		return "redirect:/";
 	}
-	
-	//----------------->Pagina para Buscar al jugador
-	@GetMapping("/MostrarGoleadores")
-	public String mostrargoleadores(Model modelo) {
-		return "Jugadores/MostrarJugadores";
 
+	// ----------------->Pagina para Indicar al jugador
+	@GetMapping("/IndicarJugador")
+	public String indicarjugador(Model modelo) {
+		return "Jugadores/IndicarJugador";
+	}
+
+	// ----------------->Metodo para obtener el jugador
+	@GetMapping("/ObtenerJugador")
+	public String obtenerjugador(@RequestParam String nombrejugador, Model modelo) {
+		JugadorDTO jugador = serviciojugador.obtenerjugador(listajugadores, nombrejugador);
+		modelo.addAttribute("JugadorDTO", jugador);
+		return "Jugadores/MostrarJugador";
+	}
+
+	// ----------------->Pagina para Revelar el jugador
+	@GetMapping("/MostrarJugador")
+	public String mostrarjugador() {
+		return "Jugadores/Mostrarjugador";
+	}
+
+	// ----------------->Pagina para Mostrar a los Mejores Jugadores
+	@GetMapping("/TablaMejores")
+	public String tablamejores(Model modelo) {
+		List<JugadorDTO> maximosgoleadores = new ArrayList<>();
+		serviciojugador.obtenermejores(maximosgoleadores, listajugadores);
+		modelo.addAttribute("ListaMejores", maximosgoleadores);
+
+		return "Jugadores/TablaMejores";
 	}
 
 }

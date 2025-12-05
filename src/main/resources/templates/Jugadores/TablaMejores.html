@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Tabla de los Mejores</title>
+</head>
+<body>
+<table>
+		<thead>
+			<tr>
+				<th>DNI</th>
+				<th>Nombre</th>
+				<th>Edad</th>
+				<th>Posicion</th>
+				<th>Equipo</th>
+				<th>Valor</th>
+				<th>Goles</th>
+				<th>Asistencias</th>
+				<th>Amarillas</th>
+				<th>Rojas</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:object="${JugadorDTO}">
+				<td th:text="*{dni}">Dni del jugador</td>
+				<td th:text="*{nombre}">Nombre del jugador</td>
+				<td th:text="*{edad}">Edad del jugador</td>
+				<td th:text="*{posicion}">Posicion del jugador</td>
+				<td th:text="*{equipo}">Equipo del jugador</td>
+				<td th:text=*{valor}>Valor del jugador</td>
+				<td th:text="*{goles}">Goles del Jugador</td>
+				<td th:text="*{asistencias}">Asistencias del jugador</td>
+				<td th:text="*{amarillas}">Amarillas del Jugador</td>
+				<td th:text="*{rojas}">Rojas del Jugador</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/" class="btn-volver">⬅ Volver</a>
+</body>
+</html>

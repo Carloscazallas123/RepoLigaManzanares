@@ -9,4 +9,5 @@ public interface ServicioJugador {
 	JugadorDTO obtenerjugador(List<JugadorDTO> listajugadores,String nombrejugador);
 	void eliminarjugador(JugadorDTO jugador,EquipoDTO equipo);
 	void guardarjugador(JugadorDTO jugador, List<EquipoDTO> Listaequipos, List<JugadorDTO> Listajugadores);
+	void obtenermejores(List<JugadorDTO> listagoleadores, List<JugadorDTO> listajugadores);
 }
