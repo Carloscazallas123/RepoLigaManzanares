@@ -58,7 +58,7 @@ public class ImplementacionPartido implements ServicioPartido {
 	}
 
 	@Override
-	public void metergol(PartidoDTO partido, JugadorDTO jugador, List<EquipoDTO> listaequipos) {
+	public void metergol(PartidoDTO partido, JugadorDTO jugador, JugadorDTO jugador2, List<EquipoDTO> listaequipos) {
 		EquipoDTO equipo1 = null;
 		EquipoDTO equipo2 = null;
 
@@ -70,6 +70,8 @@ public class ImplementacionPartido implements ServicioPartido {
 				equipo2 = listaequipos.get(i);
 			}
 		}
+
+		// ------------>Comprobar si el jugador pertenece al equipo 1 o al 2
 		if (jugador.getEquipo().equals(equipo1.getNombre())) {
 			// Añadiendo el Gol a la estadistica del jugador
 			jugador.setGoles(jugador.getGoles() + 1);
@@ -80,13 +82,25 @@ public class ImplementacionPartido implements ServicioPartido {
 			equipo2.setGolescontra(equipo1.getGolescontra() + 1);
 
 		} else if (jugador.getEquipo().equals(equipo2.getNombre())) {
-			// Añadiendo el Gol a la estadistica del jugador
+
 			jugador.setGoles(jugador.getGoles() + 1);
-			// Añadiendo el Gol al equipo visitante (equipo2) del partido
+
 			partido.setGolesV(partido.getGolesV() + 1);
-			// Añadiendo el Gol a las estadisticas de los equipo
+
 			equipo2.setGolesfavor(equipo2.getGolesfavor() + 1);
 			equipo1.setGolescontra(equipo1.getGolescontra() + 1);
+		} else {
+			System.out.println("Error");
+		}
+		
+		//-------Mismo caso con el que hace la asistencia
+
+		if (jugador2.getEquipo().equals(equipo1.getNombre())) {
+			// Añadiendo la Asistencia a la estadistica del jugador
+			jugador2.setAsistencias(jugador2.getAsistencias() + 1);
+
+		} else if (jugador2.getEquipo().equals(equipo2.getNombre())) {
+			jugador2.setAsistencias(jugador2.getAsistencias() + 1);
 		} else {
 			System.out.println("Error");
 		}

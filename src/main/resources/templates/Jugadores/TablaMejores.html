@@ -5,6 +5,7 @@
 <title>Tabla de los Mejores</title>
 </head>
 <body>
+<h3>Los Mejores Goleadores de la Liga</h3>
 <table>
 		<thead>
 			<tr>
@@ -21,20 +22,89 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:object="${JugadorDTO}">
-				<td th:text="*{dni}">Dni del jugador</td>
-				<td th:text="*{nombre}">Nombre del jugador</td>
-				<td th:text="*{edad}">Edad del jugador</td>
-				<td th:text="*{posicion}">Posicion del jugador</td>
-				<td th:text="*{equipo}">Equipo del jugador</td>
-				<td th:text=*{valor}>Valor del jugador</td>
-				<td th:text="*{goles}">Goles del Jugador</td>
-				<td th:text="*{asistencias}">Asistencias del jugador</td>
-				<td th:text="*{amarillas}">Amarillas del Jugador</td>
-				<td th:text="*{rojas}">Rojas del Jugador</td>
+			<tr th:each="JugadorDTO : ${ListaMejores}">
+				<td th:text="${JugadorDTO.dni}">Dni del jugador</td>
+				<td th:text="${JugadorDTO.nombre}">Nombre del jugador</td>
+				<td th:text="${JugadorDTO.edad}">Edad del jugador</td>
+				<td th:text="${JugadorDTO.posicion}">Posicion del jugador</td>
+				<td th:text="${JugadorDTO.equipo}">Equipo del jugador</td>
+				<td th:text="${JugadorDTO.valor}">Valor del jugador</td>
+				<td th:text="${JugadorDTO.goles}">Goles del Jugador</td>
+				<td th:text="${JugadorDTO.asistencias}">Asistencias del jugador</td>
+				<td th:text="${JugadorDTO.amarillas}">Amarillas del Jugador</td>
+				<td th:text="${JugadorDTO.rojas}">Rojas del Jugador</td>
 			</tr>
 		</tbody>
 	</table>
 	<a href="/" class="btn-volver">⬅ Volver</a>
 </body>
+<style>
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: #f4f4f4;
+	color: #333;
+	margin: 20px;
+	line-height: 1.6;
+}
+
+.titulo {
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #e0e0e0;
+	border-radius: 5px;
+}
+
+.titulo h3 {
+	margin: 0;
+	color: #555;
+	text-align: center;
+}
+h3 {
+	margin: 0;
+	color: #555;
+	text-align: center;
+	}
+	
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+th {
+	background-color: #f0f0f0;
+	font-weight: bold;
+	color: #444;
+}
+
+a.btn-volver {
+	display: block;
+	margin-top: 20px;
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	text-align: center;
+}
+
+a.btn-volver:hover {
+	background-color: #3e8e41;
+}
+
+.vacio {
+	text-align: center;
+	font-style: italic;
+	color: #777;
+}
+</style>
+</html>
 </html>

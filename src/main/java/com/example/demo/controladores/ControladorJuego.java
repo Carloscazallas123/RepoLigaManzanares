@@ -37,10 +37,12 @@ public class ControladorJuego {
 
 	// ----->Metodo para marcar el Gol
 	@GetMapping("/MeterGol")
-	public String metergol(@RequestParam int jornada, @RequestParam String fecha, @RequestParam String nombrejugador) {
+	public String metergol(@RequestParam int jornada, @RequestParam String fecha, @RequestParam String nombrejugador, @RequestParam String nombrejugador2) {
 		PartidoDTO partido = serviciopartido.obtenerpartido(ControladorPartido.listapartidos, jornada, fecha);
+		//El Jugador1 es el marca el Gol y el Jugador 2 el que hace la asistencia
 		JugadorDTO jugador = serviciojugador.obtenerjugador(ControladorJugador.listajugadores, nombrejugador);
-		serviciopartido.metergol(partido, jugador, ControladorEquipo.ListaEquipos);
+		JugadorDTO jugador2 = serviciojugador.obtenerjugador(ControladorJugador.listajugadores, nombrejugador2);
+		serviciopartido.metergol(partido, jugador, jugador2, ControladorEquipo.ListaEquipos);
 
 		return "JugarPartidos/JugarPartido";
 	}
