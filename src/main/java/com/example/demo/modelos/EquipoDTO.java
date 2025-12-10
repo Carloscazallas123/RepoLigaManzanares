@@ -3,7 +3,7 @@ package com.example.demo.modelos;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EquipoDTO {
+public class EquipoDTO implements Comparable<EquipoDTO> {
 
 	// -----------Información del equipo
 	private String nombre;
@@ -114,6 +114,18 @@ public class EquipoDTO {
 
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
+	}
+
+	@Override
+	public int compareTo(EquipoDTO equipo) {
+		if (this.puntos > equipo.getPuntos()) {
+			return -1;
+
+		} else if (this.puntos < equipo.getPuntos()) {
+			return 1;
+		}
+
+		return 0;
 	}
 
 }

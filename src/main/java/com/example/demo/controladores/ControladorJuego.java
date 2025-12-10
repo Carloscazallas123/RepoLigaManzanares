@@ -37,12 +37,17 @@ public class ControladorJuego {
 
 	// ----->Metodo para marcar el Gol
 	@GetMapping("/MeterGol")
-	public String metergol(@RequestParam int jornada, @RequestParam String fecha, @RequestParam String nombrejugador, @RequestParam String nombrejugador2) {
+	public String metergol(@RequestParam int jornada, @RequestParam String fecha, @RequestParam String nombrejugador,
+			@RequestParam String nombrejugador2) {
 		PartidoDTO partido = serviciopartido.obtenerpartido(ControladorPartido.listapartidos, jornada, fecha);
-		//El Jugador1 es el marca el Gol y el Jugador 2 el que hace la asistencia
+		// El Jugador1 es el marca el Gol y el Jugador 2 el que hace la asistencia
 		JugadorDTO jugador = serviciojugador.obtenerjugador(ControladorJugador.listajugadores, nombrejugador);
 		JugadorDTO jugador2 = serviciojugador.obtenerjugador(ControladorJugador.listajugadores, nombrejugador2);
-		serviciopartido.metergol(partido, jugador, jugador2, ControladorEquipo.ListaEquipos);
+		if (partido == null || jugador == null || jugador2 == null) {
+			System.out.println("Introduce bien los datos");
+		} else {
+			serviciopartido.metergol(partido, jugador, jugador2, ControladorEquipo.ListaEquipos);
+		}
 
 		return "JugarPartidos/JugarPartido";
 	}
@@ -59,7 +64,12 @@ public class ControladorJuego {
 			@RequestParam String nombrejugador, @RequestParam String tarjeta) {
 		PartidoDTO partido = serviciopartido.obtenerpartido(ControladorPartido.listapartidos, jornada, fecha);
 		JugadorDTO jugador = serviciojugador.obtenerjugador(ControladorJugador.listajugadores, nombrejugador);
-		serviciopartido.sacartarjeta(partido, jugador, tarjeta);
+		if (partido == null || jugador == null) {
+			System.out.println("Introduce bien los datos");
+		} else {
+			serviciopartido.sacartarjeta(partido, jugador, tarjeta);
+		}
+
 		return "JugarPartidos/JugarPartido";
 	}
 
@@ -73,7 +83,11 @@ public class ControladorJuego {
 	@GetMapping("/TerminarPartido")
 	public String terminarpartido(@RequestParam int jornada, @RequestParam String fecha) {
 		PartidoDTO partido = serviciopartido.obtenerpartido(ControladorPartido.listapartidos, jornada, fecha);
-		serviciopartido.terminarpartido(partido, ControladorEquipo.ListaEquipos);
+		if (partido == null) {
+			System.out.println("Introduce bien los datos");
+		} else {
+			serviciopartido.terminarpartido(partido, ControladorEquipo.ListaEquipos);
+		}
 
 		return "redirect:/";
 	}

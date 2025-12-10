@@ -68,17 +68,12 @@ public class ImplementacionJugador implements ServicioJugador {
 
 	@Override
 	public void obtenermejores(List<JugadorDTO> listagoleadores, List<JugadorDTO> listajugadores) {
-		int goles = 0;
 
 		for (int i = 0; i < listajugadores.size(); i++) {
 			if (listagoleadores.size() < 3) {
-				if (listajugadores.get(i).getGoles() > goles) {
-					goles = listajugadores.get(i).getGoles();
-					listagoleadores.add(listajugadores.get(i));
-				}
+				listagoleadores.add(listajugadores.get(i));
 			}
 		}
-
 	}
 
 }

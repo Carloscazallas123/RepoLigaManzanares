@@ -73,36 +73,24 @@ public class ImplementacionPartido implements ServicioPartido {
 
 		// ------------>Comprobar si el jugador pertenece al equipo 1 o al 2
 		if (jugador.getEquipo().equals(equipo1.getNombre())) {
-			// Añadiendo el Gol a la estadistica del jugador
 			jugador.setGoles(jugador.getGoles() + 1);
-			// Añadiendo el Gol al equipo visitante (equipo2) del partido
-			partido.setGolesL(partido.getGolesV() + 1);
-			// Añadiendo el Gol a las estadisticas de los equipo
+
+			partido.setGolesL(partido.getGolesL() + 1);
+
 			equipo1.setGolesfavor(equipo2.getGolesfavor() + 1);
 			equipo2.setGolescontra(equipo1.getGolescontra() + 1);
 
 		} else if (jugador.getEquipo().equals(equipo2.getNombre())) {
-
 			jugador.setGoles(jugador.getGoles() + 1);
 
 			partido.setGolesV(partido.getGolesV() + 1);
 
 			equipo2.setGolesfavor(equipo2.getGolesfavor() + 1);
 			equipo1.setGolescontra(equipo1.getGolescontra() + 1);
-		} else {
-			System.out.println("Error");
 		}
-		
-		//-------Mismo caso con el que hace la asistencia
 
-		if (jugador2.getEquipo().equals(equipo1.getNombre())) {
-			// Añadiendo la Asistencia a la estadistica del jugador
+		if (jugador2.getEquipo().equals(equipo1.getNombre()) || jugador2.getEquipo().equals(equipo2.getNombre())) {
 			jugador2.setAsistencias(jugador2.getAsistencias() + 1);
-
-		} else if (jugador2.getEquipo().equals(equipo2.getNombre())) {
-			jugador2.setAsistencias(jugador2.getAsistencias() + 1);
-		} else {
-			System.out.println("Error");
 		}
 
 	}
@@ -145,6 +133,8 @@ public class ImplementacionPartido implements ServicioPartido {
 		} else {
 			equipo1.setPuntos(equipo1.getPuntos() + 1);
 			equipo2.setPuntos(equipo2.getPuntos() + 1);
+			equipo1.setEmpates(equipo1.getEmpates() + 1);
+			equipo2.setEmpates(equipo2.getEmpates() + 1);
 		}
 
 		partido.setEstado("Terminado");

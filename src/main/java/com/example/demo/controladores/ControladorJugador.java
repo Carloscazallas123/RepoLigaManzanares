@@ -71,9 +71,10 @@ public class ControladorJugador {
 	// ----------------->Pagina para Mostrar a los Mejores Jugadores
 	@GetMapping("/TablaMejores")
 	public String tablamejores(Model modelo) {
-		List<JugadorDTO> maximosgoleadores = new ArrayList<>();
-		serviciojugador.obtenermejores(maximosgoleadores, listajugadores);
-		modelo.addAttribute("ListaMejores", maximosgoleadores);
+		List<JugadorDTO>Goleadores=new ArrayList<>();
+		Collections.sort(listajugadores);
+		serviciojugador.obtenermejores(Goleadores, listajugadores);
+		modelo.addAttribute("ListaMejores", Goleadores);
 
 		return "Jugadores/TablaMejores";
 	}

@@ -28,7 +28,7 @@ public class ControladorEquipo {
 	// ---------->Pagina para mostrar los Equipos
 	@GetMapping("/MostrarEquipos")
 	public String mostrarequipos(Model modelo) {
-		Collections.sort(ListaEquipos, (Equipo1, Equipo2) -> Integer.compare(Equipo1.getPuntos(), Equipo2.getPuntos()));
+		Collections.sort(ListaEquipos);
 		modelo.addAttribute("ListadeEquipos", ListaEquipos);
 
 		return "Equipos/MostrarEquipos";

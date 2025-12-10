@@ -1,6 +1,6 @@
 package com.example.demo.modelos;
 
-public class JugadorDTO {
+public class JugadorDTO implements Comparable<JugadorDTO> {
 
 	// -------Información del Jugador
 	private String dni;
@@ -119,6 +119,17 @@ public class JugadorDTO {
 
 	public void setEquipo(String equipo) {
 		this.equipo = equipo;
+	}
+
+	@Override
+	public int compareTo(JugadorDTO jugador) {
+		if (this.goles > jugador.getGoles()) {
+			return -1;
+		} else if (this.goles < jugador.getGoles()) {
+			return 1;
+
+		}
+		return 0;
 	}
 
 }
